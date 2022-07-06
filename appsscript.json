@@ -7,11 +7,20 @@
         "version": "v2",
         "serviceId": "drive"
       }
+    ],
+    "libraries": [
+      {
+        "userSymbol": "OAuth2",
+        "version": "41",
+        "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF"
+      }
     ]
   },
-   "oauthScopes": [
-    "https://www.googleapis.com/auth/devstorage.read_write","https://www.googleapis.com/auth/drive",
-    "https://www.googleapis.com/auth/script.external_request","https://www.googleapis.com/auth/script.scriptapp"
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/devstorage.read_write",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.scriptapp"
   ],
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8"
