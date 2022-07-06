@@ -24,4 +24,4 @@ If you want to use a Service Account you need to :
 
 ## Thanks to
 
-Made with [Devoteam G Cloud](https://gcloud.devoteam.com/?utm_source=onleebackup)
+[Devoteam G Cloud](https://gcloud.devoteam.com/?utm_source=onleebackup)
