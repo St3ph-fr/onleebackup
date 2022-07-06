@@ -21,3 +21,7 @@ If you want to use a Service Account you need to :
 - Create service acocunt
 - Generate JSON Key
 - Grant service account access to the bucket
+
+## Thanks to
+
+Made with [Devoteam G Cloud](https://gcloud.devoteam.com/?utm_source=onleebackup)
