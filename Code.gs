@@ -1,6 +1,7 @@
 const FOLDER_ID = ['FOLDER_ID_1','FOLDER_ID_2'];
 const BUCKET_NAME = 'bucket-name'; 
-const FORCE_UPLOAD = false;
+const FORCE_UPLOAD = false; // Change to true to reupload all the folder.
+const USE_SA = false; // You can use a service account to manage access to bucket
 
 /*
  * Daily backup of Google Drive folders to Google Coud Storage
@@ -9,17 +10,18 @@ const FORCE_UPLOAD = false;
  * 0. Enter folders in FOLDER_ID and Cloud Storage bucket name in BUCKET_NAME
  * 1. Launch createTrigger() a first time to validate scope
  * 2. Run a second time the createTrigger() function
+ * 3. For manual launch, run function onleebackup()
  * 
  */
 
-function backupSync(){
+function onleebackup(){
   for(let i = 0 ; i < FOLDER_ID.length ; i++){
     uploadFilesFromFolderToCloudStorage(FOLDER_ID[i])
   }
 }
 
 function createTrigger(){
-  ScriptApp.newTrigger("backupSync")
+  ScriptApp.newTrigger("onleebackup")
   .timeBased()
   .atHour(5)
   .everyDays(1) 
@@ -124,13 +126,25 @@ function uploadFileToCloudStorage(file,folderId){
     contentType: blob.getContentType(),
     payload: bytes,
     headers: {
-      Authorization: 'Bearer ' + ScriptApp.getOAuthToken(),
+      Authorization: 'Bearer ' + getToken(),
     }
   };
   const req = UrlFetchApp.fetch(url, options);
   const rep = JSON.parse(req.getContentText());
 
   return rep;
+}
+
+function getToken(){
+  if(USE_SA){
+    var service = getService();
+    if (service.hasAccess()) {
+      return service.getAccessToken();
+    }
+    throw 'Service account don\'t have access to the bucket or is badly setup.';
+  }
+
+  return ScriptApp.getOAuthToken();
 }
 
 function getFileFromShortcut(id){
