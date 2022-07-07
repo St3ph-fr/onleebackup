@@ -47,7 +47,9 @@ function uploadFilesFromFolderToCloudStorage(folderId) {
       files = Drive.Files.list({
         q: query,
         maxResults: 100,
-        pageToken: pageToken
+        pageToken: pageToken,
+        supportsAllDrives:true,
+        includeItemsFromAllDrives:true
       });
       if (!files.items || files.items.length === 0) {
         console.log('No files found.');
