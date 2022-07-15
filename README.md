@@ -7,6 +7,8 @@ Daily backup of Google Drive folders to Google Cloud Storage
 
 **onleebackup** is made with Google Apps Script and will help you to backup some folders from Google Drive to Google Cloud Storage.
 
+Get your copy : <a href="http://onleebackup.ez34.net/copy" target="_blank">http://onleebackup.ez34.net/copy</a>
+
 ## Setup onleebackup
 
 - Create a Google Cloud Platform project
